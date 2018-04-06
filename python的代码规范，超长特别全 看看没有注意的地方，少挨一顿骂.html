@@ -1,0 +1,657 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript">
+        if (window.location.toString().indexOf("shtml?") > 0) {
+            self.location = window.location.toString().replace(window.location.search.toString(), "");
+        }
+        function doccheckart(json) {
+            if (json[0].result == "1") {
+                self.location = "http://www.360doc.com/noarticle.aspx";
+            }
+        }
+    </script>
+<script src="/js/jquery1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+        if (navigator.userAgent.indexOf("iPhone") > 0 || navigator.userAgent.indexOf("Android") > 0 || navigator.userAgent.indexOf("iPod") > 0) {  //手机端跳转
+            var patt1 = new RegExp("[0-9]*_[0-9]*");
+            var url = patt1.exec(location.href);
+            if (url != "") {
+                self.location = "http://www.360doc.cn/article/" + url + ".html";
+            }
+        }
+        if ( 698706939 !=  698706939) {
+            $.ajax({
+                url: "http://www.360doc.com/ajax/getuserid.ashx",
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    if (277688 != result.userid) { 
+                        self.location = "http://www.360doc.com/content/17/1027/23/277688_698706939.shtml";
+                    }
+                }
+            });
+        }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="360doc" name="classification" /><link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/277688_698706939.html"/><meta content="docstring,注释,函数" name=keywords><meta content="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" name=description><meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/277688_698706939.html"/><meta content="http://www.toutiao.com/i6481514729968763405/" name=360docabstract><meta content="www.360doc.com" name="author" /><title>
+python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂
+</title>
+<script src="/js/showarticlefollow20160329.js?t=2017062101" type="text/javascript" charset="utf-8"></script>
+<script src="http://www.360doc.com/js/jQuery.md5.min.js?t=2016041501" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d86954201130d615136257dde062a503";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" type="text/css" href="http://css.360doc.com/wzhead-cleaned.css?t=2016011601" /><link rel="stylesheet" type="text/css" href="http://css.360doc.com/newArticle20160509.css?t=2017101701" />
+<script type="text/javascript" language="javascript">
+        window.onerror = ignoreError;
+        function ignoreError() {
+            return true;
+        }
+    </script>
+<link href="http://css.360doc.com/index7/newheader.css?t=2016123003" rel="stylesheet" type="text/css" /></head>
+<body onmouseup="setDragEnd()" onclick="delAllDiv(event)">
+<span id="LayerLogin"></span>
+<div style="position: fixed; width: 100%; z-index: 1000;">
+<div class="header" style="background-color: #ffffff;">
+<div class="header_1">
+<a href="http://www.360doc.com/index.html">
+<img src="http://pubimage.360doc.com/index7/nlogo.jpg" class="f_left" /></a>
+<div class="mylibrary">
+<a id="userInfoUrl" href="http://www.360doc.com/my360doc.aspx" class="a1">
+<div class="h_user">
+<img id="divuserinfonew" src="http://pubimage.360doc.com/index7/dingtu.gif" /><span></span>
+</div>
+我的图书馆
+</a>
+<ul class="hm_list hm_account" style="display: none;">
+<li><a href="http://www.360doc.com/myindex.aspx">首页</a></li>
+<li><a href="http://www.360doc.com/myfiles.aspx?app=1&type=3">馆藏</a></li>
+<li><a href="http://www.360doc.com/myreadroom.aspx">阅览室</a></li>
+<li><a href="http://www.360doc.com/mystudy.aspx">学习圈</a></li>
+<li><a href="http://www.360doc.com/mycontacts.aspx">通讯录</a></li>
+<li><a href="javascript:void(0);" onclick="displaylogin();">退出帐号</a></li>
+</ul>
+</div>
+<div class="headmail f_left" style="display: none;">
+<p class="h_icon1" id="newMsg"></p>
+<span class="h_border"></span>
+<ul class="hm_list" id="msgtips">
+<li id="msgicon"><a href="/mymsg.aspx?app=2">查看信箱</a></li>
+<li id="sysmsgicon"><a href="/mymsg.aspx?app=9">系统消息</a></li>
+<li id="sysicon"><a href="/mymsg.aspx?app=4">官方通知</a></li>
+<li class="hm_color2" style="background-color: #f4f4f4"><a href="/mymsg.aspx?app=6">设置</a></li>
+</ul>
+</div>
+<div class="headtalker f_left" style="display: none;">
+<p class="h_icon1" id="newDialog"></p>
+<span class="h_border"></span>
+<ul class="hm_list">
+<li id="li1chat"><a href="javascript:void(0)" onclick="initchatnew()">开始对话</a></li>
+<li id="li2chat" style="display: none;"><a href="javascript:void(0)" style="color: #141414;">有<span>11</span>人和你对话，<span onclick="initchatnew()" style="color: #4578b4">查看</span>&nbsp;<span onclick="clearinfochat()" style="color: #4578b4">忽略</span></a></li>
+<li><a href="http://www.360doc.com/mycontacts.aspx?app=8">历史对话记录</a></li>
+<li class="hm_color2" style="background-color: #f4f4f4"><a href="http://www.360doc.com/mycontacts.aspx?app=7">通知设置</a></li>
+</ul>
+</div>
+<a href="http://www.360doc.com/advice.html" target="_blank" class="head_talk f_right">留言交流</a>
+<div class="headsearch f_right">
+<div class="zcomdiv">
+<input type="text" class="headsearch_inp f_left" value="搜文章 找馆友" />
+<span class="headsearch_btn f_right" id="searchlinkid"></span>
+</div>
+<div class="headsearch_select">
+<p class="hs_title">请选择搜索范围</p>
+<a href="javascript:goSearch();" class="cur">含&nbsp;<span></span>&nbsp;的文章</a>
+<a href="javascript:goSearch();">昵称为&nbsp;<span></span>&nbsp;的馆友</a>
+<a href="javascript:goSearch();">兴趣为&nbsp;<span></span>&nbsp;的馆友</a>
+</div>
+</div>
+</div>
+</div>
+<div class="arti_type_shadow"></div>
+</div>
+<div style="height: 68px; _height: 0px; width: 100%;"></div>
+<div class="clear360doc"></div>
+<div class="doc360article_content">
+<div style="height: 90px; padding-top: 13px;">
+<script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script><ins class='adsbygoogle' style='display: inline-block; width: 970px; height: 90px' data-ad-client='ca-pub-6625678643128649' data-ad-slot='2709112222'></ins><script> (adsbygoogle = window.adsbygoogle || []).push({ }); </script>
+</div>
+<p class="clearboth"></p>
+<div class="a_left">
+<div id="bgchange">
+<div class="fontsize_bgcolor_controler">
+<div class="a_bgcolor">
+<img src="http://pubimage.360doc.com/NewArticle/bgcolor.jpg" />
+<div class="a_colorlist">
+<span class="a_color1" onclick="artStatistics('20-11-1');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color2" onclick="artStatistics('20-11-2');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color3" onclick="artStatistics('20-11-3');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color4" onclick="artStatistics('20-11-4');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color5" onclick="artStatistics('20-11-5');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color6 cur" onclick="artStatistics('20-11-6');">
+<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+</div>
+</div>
+<div class="a_fontsize">
+<img src="http://pubimage.360doc.com/NewArticle/fontSize.jpg" />
+<div class="fschange">
+<label>
+<input type="radio" name="font_Size" id="" value="18" onclick="artStatistics('20-10-1');" />大
+</label>
+&nbsp;
+<label>
+<input type="radio" name="font_Size" id="" value="16" onclick="artStatistics('20-10-2');" />中
+</label>
+&nbsp;
+<label>
+<input type="radio" name="font_Size" id="" value="14" onclick="artStatistics('20-10-3');" />小
+</label>
+</div>
+</div>
+</div>
+<h2 id="titiletext">python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂</h2>
+<div class="article_data">
+<div class="article_data_left">
+2017-10-27
+<span class="a_username">&nbsp;<a href="http://www.360doc.com/userhome/277688" id="savernickname" target="_blank" onclick="artStatistics(&#39;20-7-1&#39;);">山峰云绕</a>
+</span>
+<span id="articleinfo">
+<span id="docsource" class="a_from"></span><span id="360doc_Readnum"></span><span id="360docResaveCount"><span onclick="ShowSaverUser();artStatistics('20-13');" id="360doc_saverNum" style="cursor: pointer;"></span>
+<span id="360doc_saverUser">
+<div style="position: absolute; height: 305px; width: 144px; left: 0px; z-index: 2;" id="sameArtOuter">
+<div onclick="event.cancelBubble=true;" style="overflow-y: auto; height: 300px; overflow-x: hidden; z-index: 100; right: 0px; margin-top: -10px;" id="sameArt">
+</div>
+</div>
+</span>
+</span>
+</span>
+</div>
+<div id="resavelayer1" class="bdsharebuttonbox article_data_right">
+</div>
+</div>
+<div id="articlecontent" class="article_container" onmousedown="newhighlight = true;" onmouseup="NewHighlight(event);">
+<table>
+<tbody>
+<tr>
+<td id="artContent" width="656">
+<div style="width: 656px; margin: 0; padding: 0; height: 0;"></div>
+<div><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_1_20171027114657431" inline="0" img_height="307" img_width="310"></div>
+<h1><br><a href="http://www.toutiao.com/i6481514729968763405/"><font style="FONT-SIZE: 14px">http://www.toutiao.com/i6481514729968763405/</font></a><font style="FONT-SIZE: 14px">​<br></font>​前言</h1>
+<p>Python 学习之旅，先来看看 Python 的代码规范，让自己先有个意识，而且在往后的学习中慢慢养成习惯，所以习惯特别特别重要，所以大家跟着小编往下面看吧 需要文档的朋友可以加下群哦，群内貌似也有两千多人了，有很多热爱python聚集在了一起，并整理了大量的学习资料上传到了群文件当中，喜欢python的朋友可以加入python群：526929231欢迎大家交流讨论各种技术，一起快速成长 通过阅读博客和文章，保持有关信息的新鲜度也很重要，PDF的书籍已经整理到了群文件当中</p>
+<h1></h1>
+<p>目录</p>
+<p><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_2_20171027114657540" inline="0" img_height="579" img_width="668"></p>
+<h1></h1>
+<p>一、简明概述</p>
+<p>1、编码</p>
+<ul>
+<li>
+<p>如无特殊情况, 文件一律使用 UTF-8 编码</p>
+<li>
+<p>如无特殊情况, 文件头部必须加入<code>#-*-coding:utf-8-*-</code>标识</p></li></li></ul>
+<p>2、代码格式</p>
+<p>2.1、缩进</p>
+<ul>
+<li>
+<p>统一使用 4 个空格进行缩进</p></li></ul>
+<p>2.2、行宽</p>
+<p>每行代码尽量不超过 80 个字符(在特殊情况下可以略微超过 80 ，但最长不得超过 120)</p>
+<p>理由：</p>
+<ul>
+<li>
+<p>这在查看 side-by-side 的 diff 时很有帮助</p>
+<li>
+<p>方便在控制台下查看代码</p>
+<li>
+<p>太长可能是设计有缺陷</p></li></li></li></ul>
+<p>2.3、引号</p>
+<p>简单说，自然语言使用双引号，机器标示使用单引号，因此 <strong>代码里</strong> 多数应该使用 <strong>单引号</strong></p>
+<ul>
+<li>
+<p><strong>自然语言</strong> <strong>使用双引号</strong> "..." </p></li></ul>
+<p>例如错误信息；很多情况还是 unicode，使用u"你好世界"</p>
+<ul>
+<li>
+<p><strong>机器标识</strong> <strong>使用单引号</strong> '...' </p></li></ul>
+<p>例如 dict 里的 key</p>
+<ul>
+<li>
+<p><strong>正则表达式</strong> <strong>使用原生的双引号</strong> r"..."</p>
+<li>
+<p><strong>文档字符串 (docstring)</strong> <strong>使用三个双引号</strong> """......"""</p></li></li></ul>
+<p>2.4、空行</p>
+<ul>
+<li>
+<p>模块级函数和类定义之间空两行；</p>
+<li>
+<p>类成员函数之间空一行；</p></li></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_3_20171027114657665" inline="0" img_height="230" img_width="809"></p>
+<ul>
+<li>
+<p>可以使用多个空行分隔多组相关的函数</p>
+<li>
+<p>函数中可以使用空行分隔出逻辑相关的代码</p></li></li></ul>
+<p><strong>2.5、编码</strong></p>
+<ul>
+<li>
+<p>文件使用 UTF-8 编码</p>
+<li>
+<p>文件头部加入 # -*-conding:utf-8-*- 标识</p></li></li></ul>
+<h1>3、import 语句</h1>
+<ul>
+<li>
+<p>import 语句应该分行书写</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_4_20171027114657744" inline="0" img_height="187" img_width="811"></p>
+<ul>
+<li>
+<p>import语句应该使用 <strong>absolute</strong> import</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_5_20171027114657853" inline="0" img_height="104" img_width="809"></p>
+<ul>
+<li>
+<p>import语句应该放在文件头部，置于模块说明及docstring之后，于全局变量之前；</p>
+<li>
+<p>import语句应该按照顺序排列，每组之间用一个空行分隔</p></li></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_6_20171027114657915" inline="0" img_height="149" img_width="810"></p>
+<ul>
+<li>
+<p>导入其他模块的类定义时，可以使用相对导入</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_7_2017102711465840" inline="0" img_height="34" img_width="803"></p>
+<ul>
+<li>
+<p>如果发生命名冲突，则可使用命名空间</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_8_20171027114658103" inline="0" img_height="111" img_width="805"></p>
+<p>4、空格</p>
+<ul>
+<li>
+<p>在二元运算符两边各空一格[=,-,+=,==,&gt;,in,is not, and]<br data-filtered="filtered">:</p></li></ul>
+<p><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_9_20171027114658181" inline="0" img_height="270" img_width="804"></p>
+<ul>
+<li>
+<p>函数的参数列表中，,之后要有空格</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_10_20171027114658322" inline="0" img_height="150" img_width="802"></p>
+<ul>
+<li>
+<p>函数的参数列表中，默认值等号两边不要添加空格</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_11_20171027114658400" inline="0" img_height="146" img_width="810"></p>
+<ul>
+<li>
+<p>左括号之后，右括号之前不要加多余的空格</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_12_20171027114658478" inline="0" img_height="110" img_width="804"></p>
+<ul>
+<li>
+<p>字典对象的左括号之前不要多余的空格</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_13_20171027114658540" inline="0" img_height="113" img_width="801"></p>
+<ul>
+<li>
+<p>不要为对齐赋值语句而使用的额外空格</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_14_20171027114658665" inline="0" img_height="191" img_width="803"></p>
+<p>5、换行</p>
+<p>Python 支持括号内的换行。这时有两种情况。</p>
+<p>1) 第二行缩进到括号的起始处</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_15_20171027114658775" inline="0" img_height="52" img_width="807"></p>
+<p>2) 第二行缩进 4 个空格，适用于起始括号就换行的情形</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_16_20171027114658869" inline="0" img_height="93" img_width="806"></p>
+<p>使用反斜杠换行，二元运算符+ .等应出现在行末；长字符串也可以用此法换行</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_17_20171027114658978" inline="0" img_height="154" img_width="795"></p>
+<p>禁止复合语句，即一行中包含多个语句：</p>
+<p><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_18_2017102711465956" inline="0" img_height="148" img_width="372"></p>
+<p>if/for/while一定要换行：</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_19_20171027114659150" inline="0" img_height="126" img_width="805"></p>
+<p>6、docstring</p>
+<p>docstring 的规范中最其本的两点：</p>
+<ol>
+<li>
+<p>所有的公共模块、函数、类、方法，都应该写 docstring 。私有方法不一定需要，但应该在 def 后提供一个块注释来说明。</p>
+<li>
+<p>docstring 的结束”“”应该独占一行，除非此 docstring 只有一行。</p></li></li></ol>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_20_20171027114659244" inline="0" img_height="114" img_width="791"></p>
+<h1></h1>
+<p>二、注释</p>
+<p>1、注释</p>
+<p>1.1、块注释</p>
+<p>“#”号后空一格，段落件用空行分开（同样需要“#”号）</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_21_20171027114659322" inline="0" img_height="106" img_width="806"></p>
+<p>1.2、行注释</p>
+<p>至少使用两个空格和语句分开，注意不要使用无意义的注释</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_22_20171027114659431" inline="0" img_height="101" img_width="800"></p>
+<p>1.3、建议</p>
+<ul>
+<li>
+<p>在代码的关键部分(或比较复杂的地方), 能写注释的要尽量写注释</p>
+<li>
+<p>比较重要的注释段, 使用多个等号隔开, 可以更加醒目, 突出重要性</p></li></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_23_20171027114659509" inline="0" img_height="210" img_width="799"></p>
+<p>2、文档注释（Docstring）</p>
+<p>作为文档的Docstring一般出现在模块头部、函数和类的头部，这样在python中可以通过对象的__doc__对象获取文档. </p>
+<p>编辑器和IDE也可以根据Docstring给出自动提示.</p>
+<ul>
+<li>
+<p>文档注释以 “”” 开头和结尾, 首行不换行, 如有多行, 末行必需换行, 以下是Google的docstring风格示例</p></li></ul>
+<p><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_24_20171027114659603" inline="0" img_height="343" img_width="800"></p>
+<ul>
+<li>
+<p>不要在文档注释复制函数定义原型, 而是具体描述其具体内容, 解释具体参数和返回值等</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_25_20171027114659712" inline="0" img_height="210" img_width="805"></p>
+<ul>
+<li>
+<p>对函数参数、返回值等的说明采用numpy标准, 如下所示</p></li></ul>
+<p><img alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_26_20171027114659869" inline="0" img_height="589" img_width="804"></p>
+<ul>
+<li>
+<p>文档注释不限于中英文, 但不要中英文混用</p>
+<li>
+<p>文档注释不是越长越好, 通常一两句话能把情况说清楚即可</p>
+<li>
+<p>模块、公有类、公有方法, 能写文档注释的, 应该尽量写文档注释</p></li></li></li></ul>
+<h1></h1>
+<p>三、命名规范</p>
+<p>1、模块</p>
+<ul>
+<li>
+<p>模块尽量使用小写命名，首字母保持小写，尽量不要用下划线(除非多个单词，且数量不多的情况)</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_27_2017102711470025" inline="0" img_height="125" img_width="855"></p>
+<p>2、类名</p>
+<ul>
+<li>
+<p>类名使用驼峰(CamelCase)命名风格，首字母大写，私有类可用一个下划线开头</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_28_20171027114700134" inline="0" img_height="167" img_width="861"></p>
+<ul>
+<li>
+<p>将相关的类和顶级函数放在同一个模块里. 不像Java, 没必要限制一个类一个模块.</p></li></ul>
+<p>3、函数</p>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_29_20171027114700228" inline="0" img_height="278" img_width="866"></p>
+<p>4、变量名</p>
+<ul>
+<li>
+<p>变量名尽量小写, 如有多个单词，用下划线隔开</p></li></ul>
+<p><img style="MAX-WIDTH: 650px" alt="python的代码规范，超长特别全 看看没有注意的地方，少挨一顿骂" src="http://image109.360doc.com/DownloadImg/2017/10/2723/114652759_30_20171027114700384" inline="0" img_height="76" img_width="864"></p>
+<ul>
+<li>
+<p>常量采用全大写，如有多个单词，使用下划线隔开</p></li></ul>
+<p>5、常量</p>
+<ul>
+<li>
+<p>常量使用以下划线分隔的大写命名</p></li></ul>
+<p>通过阅读博客和文章，保持有关信息的新鲜度也很重要，有很多热爱python聚集在了一起，并整理了大量的学习资料上传到了群文件当中，PDF的书籍已经整理到了群文件当中，需要的朋友可以加下群，群内貌似也有两千多人了，喜欢python的朋友可以加入python群：526929231欢迎大家交流讨论各种技术，一起快速成长</p>
+</td>
+<script>
+                                    var html = document.getElementById("artContent").innerHTML;
+                                    document.getElementById("artContent").innerHTML = html;
+
+                                </script>
+</tr>
+</tbody>
+</table>
+<div id="viewerPlaceHolder" style="width: 717px; height: 700px; display: none; margin: 0 auto;">
+</div>
+</div>
+<table>
+<tbody>
+<tr>
+<td>
+<ul></ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div></div>
+<span></span>
+<a></a>
+<p style="margin: 0; padding: 0;"></p>
+<p class="clearboth"></p>
+<div id="divreward" style="display: none;"></div>
+<div class="bdsharebuttonbox bottombtn" style="margin-top: 33px;">
+<div class="zcommond" style="overflow: visible;">
+<a href="javascript:void(0);" class="btn_collect" onclick="SaveArt();artStatistics('20-3-2');">转藏到我的图书馆</a>
+<a id="flowimg3" href="javascript:void(0);" class="btn_good" onclick="Showflowerlayer('sendedLayer1');">献花（<span id="articleflowernum">0</span>）
+<span id="flowernumadd" style="display: none;">+1</span>
+</a>
+<span class="span1 f_left" onclick="setTimeout(function(){$('.bottombtn .sharelist_new').slideToggle(0);},10);artStatistics('20-8-3');" onmouseover="this.style.color='#0f659c'" onmouseout="this.style.color=''">分享：</span>
+<a class="sharewx f_left" href="javascript:void(0);" onclick="shareWeixin();artStatistics('20-8-6');">微信</a>
+<div class="s2 f_left" onclick="setTimeout(function(){$('.bottombtn .sharelist_new').slideToggle(0);},10);artStatistics('20-8-4');"><span></span></div>
+</div>
+<div class="sharelist_new" id="fenxiangLayer2">
+<a class="slbg1" href="javascript:void(0);" data-cmd="qzone" onclick="artStatistics('20-8-8');">QQ空间</a>
+<a class="slbg2" href="javascript:void(0);" data-cmd="sqq" onclick="artStatistics('20-8-10');">QQ好友</a>
+<a class="slbg3" href="javascript:void(0);" data-cmd="tsina" onclick="artStatistics('20-8-12');">新浪微博</a>
+<a class="slbg5" href="javascript:void(0);" onclick="showdivemail1();artStatistics('20-8-16');">推荐给朋友</a>
+</div>
+</div>
+<div class="bottom_controler">
+<p class="bottom_cleft">
+来自：
+<span class="a_username" style="width: auto;">
+<a href="http://www.360doc.com/userhome/277688" id="savernickname2" target="_blank" onclick="artStatistics(&#39;20-7-2&#39;);">山峰云绕</a>
+</span>
+&gt;
+<span id="cname" class="a_from"><a href='http://www.360doc.com/userhome.aspx?userid=277688&cid=224' target='_blank' onclick='artStatistics("20-6");'>《Python代码知识游戏黑客编程与英语》</a></span>
+</p>
+<div class="bottom_cright">
+<a href=" https://www.baidu.com/s?wd=docstring+%e6%b3%a8%e9%87%8a+%e5%87%bd%e6%95%b0&tn=SE_hldp01010_6r0gix1f" target="_blank" class="a1" onclick="artStatistics('20-19');">以文找文</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(0);" class="a2" onclick="showAlertLayer1();artStatistics('20-18');">举报</a>
+</div>
+</div>
+<div class="prev_next">
+<p id="lastart" class="p1">
+</p>
+<p id="nextart" class="p2">
+</p>
+</div>
+</div>
+<p class="clearboth"></p>
+<div style="width: 676px; float: left;">
+<div class="str_border" style="border: none; position: relative; z-index: 2;">
+<strong>猜你喜欢</strong>
+</div>
+<ul class="youlike" style="margin-top: -18px; position: relative; z-index: 1;">
+<div style="width: 676px; height: 280px; border: 0;" id="divyoulikead">
+</div>
+</ul>
+<div class="zcommond" style="padding: 10px 0 5px;">
+<div class="bottom_article f_left">
+<div class="str_border">
+<strong>类似文章</strong>
+<a href=http://www.360doc.com/relevant/698706939_more.shtml target='_blank' class='a_more f_right' onclick='artStatistics("20-9-8");'>更多</a>
+</div>
+<ul class="barticle_list">
+<li><span><a href=http://www.360doc.com/content/14/1111/15/15077656_424317786.shtml target=_blank onclick='artStatistics("20-9-7");'>PEP8 Python 编码规范整理</a></span></li>
+<li><span><a href=http://www.360doc.com/content/16/1026/15/16740871_601523978.shtml target=_blank onclick='artStatistics("20-9-7");'>PEP 8</a></span></li>
+<li><span><a href=http://www.360doc.com/content/17/0913/21/7210702_686879529.shtml target=_blank onclick='artStatistics("20-9-7");'>Python 编码规范(Google)</a></span></li>
+<li><span><a href=http://www.360doc.com/content/15/0527/12/25694179_473593016.shtml target=_blank onclick='artStatistics("20-9-7");'>第一章：基础知识</a></span></li>
+<li><span><a href=http://www.360doc.com/content/14/1202/21/15257968_429941753.shtml target=_blank onclick='artStatistics("20-9-7");'>Python相关面试问题整理</a></span></li>
+<li><span><a href=http://www.360doc.com/content/17/0907/08/46931221_685162759.shtml target=_blank onclick='artStatistics("20-9-7");'>Python 开发者面向文档编程的正确姿势</a></span></li>
+<li><span><a href=http://www.360doc.com/content/13/0906/13/7991404_312601186.shtml target=_blank onclick='artStatistics("20-9-7");'>10个调试和排错的小建议</a></span></li>
+<li><span><a href=http://www.360doc.com/content/15/0123/10/14050678_443024197.shtml target=_blank onclick='artStatistics("20-9-7");'>4. 控制流</a></span></li>
+</ul>
+</div>
+<div class="bottom_article f_right">
+<div class="str_border">
+<strong>精选文章</strong>
+</div>
+<ul class="barticle_list">
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/0213/00/4035632_265306408.shtml target="_blank">如何放下爱情？</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/0708/23/479061_298481413.shtml target="_blank">唤醒自己30句人生格言</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/0314/20/1717866_271433195.shtml target="_blank">与各种人沟通的方法</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/1002/23/3698323_318573229.shtml target="_blank">班主任因生给爱十法</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/0920/00/1878641_315597958.shtml target="_blank">孩子们办手抄报不用愁了</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/1021/20/9642930_323001248.shtml target="_blank">8种水果是"黄金补品"</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/13/1103/22/90976_326304551.shtml target="_blank">无法抗拒十种心理</a></span></li>
+<li><span><a onclick="artStatistics('20-9-9');" href=http://www.360doc.com/content/14/0223/09/653532_354901557.shtml target="_blank">骨科医生教你如何长高</a></span></li>
+</ul>
+</div>
+</div>
+<div id="divunderad">
+</div>
+<div id="ReflectionPart">
+<div style="height: 156px; margin: 0px 0px;">
+<div class="plbox">
+<div style="padding-left: 6px;">
+<div class="titwx" style="height: 23px; font-size: 16px; font-weight: bold; margin-top: 10px;">
+发表评论<a target="_blank" href="http://www.360doc.com/agreement.html" style="float: right; font-size: 12px; color: #666; font-weight: normal; line-height: 20px; padding-right: 4px;">评论公约</a>
+</div>
+<textarea name="SendRefTB" id="SendRefTB" style="width: 100%; margin-top: 6px; height: 75px; border: 1px solid #e7e7e7; background-color: #fff; overflow: auto; font-size: 12px;" onfocus="testContent(1);" onblur="testContent(2)"></textarea>
+<div style="text-align: right; padding-right: 3px; padding-top: 6px;">
+<div class="huifubt">
+<a id="ImgSendPL" href="javascript:void(0);" onclick="SubmitReflection();"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="padding-top: 15px; padding-left: 15px;" id="Reflction">
+</div>
+</div>
+</div>
+<div class="a_right">
+<div class="user_info">
+<div class="user_photo f_left">
+<p class="user_photopic">
+<a href="http://www.360doc.com/userhome/277688" id="userphotourl" target="_blank" onclick="artStatistics(&#39;20-7-4&#39;);">
+<img src="http://pubimage.360doc.com/head/005.gif" id="userphoto" width="58" height="58" />
+</a>
+</p>
+<a href="javascript:void(0);" onclick="docTalk();artStatistics('20-15');" class="user_talk" title="与TA对话"></a>
+</div>
+<div class="user_data f_right">
+<div class="user_data_name">
+<a href="http://www.360doc.com/userhome/277688" id="nickname" target="_blank" onclick="artStatistics(&#39;20-7-3&#39;);">山峰云绕</a>
+<img src="http://pubimage.360doc.com/NewArticle/user_name_tag.gif" alt="图书馆" />
+</div>
+<p id="userdegree"><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar2.gif' /></p>
+<div class="user_data_num">
+<a id="spanfollowstatus" class="gz_no"></a>
+<script type="text/javascript">isfollow(277688);</script>
+<span id="follownum">442</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span>馆藏</span>&nbsp;<span id="artnum">43483</span>
+</div>
+</div>
+</div>
+<div class="his_her"><ul class='his_her_type'><li class='f_left curone'>TA的最新馆藏</li></ul><div class='his_her_div' style="height:190px;"><ul class='his_her_list'><li><div><span></span><a href=http://www.360doc.com/content/18/0406/03/277688_743193135.shtml target=_blank onclick="artStatistics('20-9-3');">什么是量子材料？</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a href=http://www.360doc.com/content/18/0404/21/40843017_742920147.shtml target=_blank onclick="artStatistics('20-9-3');">牛人拆开微波炉改造后，功能谁也没想到，简直就是天才发明</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a href=http://www.360doc.com/content/18/0404/21/40843017_742917059.shtml target=_blank onclick="artStatistics('20-9-3');">坏电瓶不存电别再扔掉了，教你修复方法，电瓶电力又像新的一样猛</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a href=http://www.360doc.com/content/18/0405/19/5426525_743119970.shtml target=_blank onclick="artStatistics('20-9-3');">56个民族美女唱着56支歌谣！</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a href=http://www.360doc.com/content/13/0724/00/9863648_302085188.shtml target=_blank onclick="artStatistics('20-9-3');">做一个不存在的房间 比赚房更有利的暗格</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a href=http://www.360doc.com/content/18/0404/14/38821649_742808167.shtml target=_blank onclick="artStatistics('20-9-3');">简单易懂风水小知识，受用无穷</a></div></li></ul></div></div>
+<div class="clear360doc" style="padding-top: 10px; height: 260px;">
+<div id="divifartad1">
+<script>
+            var strow = document.body.offsetWidth;
+            var strsw = document.body.scrollWidth;
+            var strsc = window.screen.width;
+
+            function aliad1() {
+                document.write('<a style="display:none!important" id="tanx-a-mm_11220363_1101997_10218757"></a>');
+                tanx_s = document.createElement("script");
+                tanx_s.type = "text/javascript";
+                tanx_s.charset = "gbk";
+                tanx_s.id = "tanx-s-mm_11220363_1101997_10218757";
+                tanx_s.async = true;
+                tanx_s.src = "http://p.tanx.com/ex?i=mm_11220363_1101997_10218757";
+                tanx_h = document.getElementsByTagName("head")[0];
+                if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+            }
+
+            function aliad2() {
+                document.write('<a style="display:none!important" id="tanx-a-mm_11220363_1101997_26568831"></a>');
+                tanx_s = document.createElement("script");
+                tanx_s.type = "text/javascript";
+                tanx_s.charset = "gbk";
+                tanx_s.id = "tanx-s-mm_11220363_1101997_26568831";
+                tanx_s.async = true;
+                tanx_s.src = "http://p.tanx.com/ex?i=mm_11220363_1101997_26568831";
+                tanx_h = document.getElementsByTagName("head")[0];
+                if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+            }
+
+
+            if (strsc <= 1024) {
+                aliad1();
+            }
+            else {
+                //300宽
+                aliad2();
+            }
+        </script>
+</div>
+<div style="height: 10px;">
+</div>
+</div>
+<div class="his_her" id="recommendArt" style="margin-top: 5px;">
+<div class="str_border" style="margin: 0;">
+<span style="font-size: 14px; float: left;">喜欢该文的人也喜欢</span>
+<a style="float: right;" class="a_more" onclick="artStatistics('20-9-4');" href="http://www.360doc.com/readroom.html" target="_blank">更多</a>
+</div>
+<div class='his_her_div' style="height: 264px;">
+<ul class='his_her_list'>
+<li id="recommendArtLists"></li>
+</ul>
+</div>
+</div>
+<div class="clear360doc" style="padding-top: 10px;" id="divifartad2">
+</div>
+<br />
+<div id="divifartrightsogou">
+</div>
+<div class="clear360doc" id="divad5" style="padding-top: 11px; zoom: 1; width: 300px;">
+<div id="divad4" style="display: none;">
+<div id="divifartad">
+</div>
+<div class="ggwz">
+<a href="javascript:void(0);" onclick="closead(2);">关闭</a>
+</div>
+<div style="height: 13px;">
+</div>
+</div>
+<div style="clear: both; display: none;" id="divad6">
+<div id="adfloatbaidu">
+</div>
+<div class="ggwz" style="left: 25px;">
+<a href="javascript:void(0);" onclick="closead(3);">关闭</a>
+</div>
+<div style="height: 13px;">
+</div>
+</div>
+<div style="height: 75px;">
+</div>
+</div>
+</div>
+</div>
+<p class="clearboth"></p>
+<input type="hidden" id="artid" value="698706939" />
+<input type="hidden" id="docarttitle" value="python%e7%9a%84%e4%bb%a3%e7%a0%81%e8%a7%84%e8%8c%83%ef%bc%8c%e8%b6%85%e9%95%bf%e7%89%b9%e5%88%ab%e5%85%a8+%e7%9c%8b%e7%9c%8b%e6%b2%a1%e6%9c%89%e6%b3%a8%e6%84%8f%e7%9a%84%e5%9c%b0%e6%96%b9%ef%bc%8c%e5%b0%91%e6%8c%a8%e4%b8%80%e9%a1%bf%e9%aa%82" />
+<input type="hidden" id="firstartid" value="698706939" />
+<input type="hidden" id="firstuid" value="277688" />
+<input type="hidden" id="firstarturl" value="http://www.360doc.com/content/17/1027/23/277688_698706939.shtml" />
+<input type="hidden" id="subclassid" value="-1" />
+<input type="hidden" id="recommendart1" value="429941753" />
+<input type="hidden" id="recommendart2" value="-1" />
+<input type="hidden" id="isowner" value="False" />
+<input type="hidden" id="original" value="0" />
+<input type="hidden" id="showrewardlist" value="0" />
+<input type="hidden" id="saveruserid" value="277688" />
+<input type="hidden" id="artreadroomid" value="0" />
+<script src="http://www.360doc.com/js/Statistics/sha1.js?t=2017092101" type="text/javascript"></script>
+<script src="http://www.360doc.com/js/Statistics/addStatistics.js?t=2017101601" type="text/javascript"></script>
+<script src="http://www.360doc.com/js/showarticle.js?t=2018030801" type="text/javascript" charset="utf-8"></script>
+<script>GerLookingUserInfo(1,277688,1,0,'-1',-1,10,0);OutputSource('http://www.toutiao.com/i6481514729968763405/','');OutputLastNextArt('%3cspan+style%3d%22color%3a%23b0b0b0%3b%22%3e%5b%e8%bd%ac%5d%26nbsp%3b%3c%2fspan%3e%e7%94%b5%e8%84%91%e8%93%9d%e5%b1%8f%e4%b8%8d%e5%8f%af%e6%80%95%ef%bc%8c%e5%b0%8f%e7%bc%96%e5%b8%a6%e4%bd%a0%e7%9c%8b%e4%bb%a3%e7%a0%81%e4%b8%80%e6%8b%9b%e7%a0%b4%e8%a7%a3%e8%93%9d%e5%b1%8f%e9%97%ae%e9%a2%98','http://www.360doc.com/content/17/1010/22/1777922_693904174.shtml',0);OutputLastNextArt('%e4%bd%bf%e7%94%a8Python%e5%88%9b%e5%bb%baAI%e6%af%94%e6%82%a8%e6%83%b3%e8%b1%a1%e7%9a%84%e6%9b%b4%e5%ae%b9%e6%98%93','http://www.360doc.com/content/17/1028/01/277688_698718517.shtml',1);</script>
+<script type="text/javascript" src="http://www.360doc.com/js/index7/newheader.js?t=2017092501"></script>
+<script src="http://blockart.360doc.com/ajax/getstatusv2.ashx?aid=698706939" type="text/javascript" charset="utf-8" async="async"></script>
+<script type="text/javascript">
+        var baiduImagePlus = {
+            noLogo: true,
+            unionId: 'u2617463',
+            maxMiniAdCount: 0,
+            formList: [{ formId: 10 }]
+        };
+    </script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/i.js"></script>
+</body>
+</html>
